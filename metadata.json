@@ -1,0 +1,6 @@
+{
+  "name": "OmniTask: Autonomous Executive Scheduling AI Agent",
+  "description": "Autonomous executive scheduling AI agent powered by Python LangChain, LangSmith real-time tracing, and a React Native Android interface.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
