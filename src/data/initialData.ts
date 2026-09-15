@@ -1,4 +1,4 @@
-import { MeetingEvent, CalendarConflict, ExecutiveProfile, LangSmithTrace } from '../types';
+import { MeetingEvent, CalendarConflict, ExecutiveProfile, LangSmithTrace, ExecutiveTask } from '../types';
 
 export const INITIAL_EXECUTIVE_PROFILE: ExecutiveProfile = {
   name: 'Alex Vance',
@@ -415,5 +415,63 @@ export const INITIAL_MESSAGES = [
       type: 'conflict_resolve',
       summary: '2 Critical Conflicts flagged with ready-to-apply autonomous solutions.'
     }
+  }
+];
+
+export const INITIAL_TASKS: ExecutiveTask[] = [
+  {
+    id: 'task-1',
+    title: 'Review Sequoia Series C term sheet covenants with counsel',
+    priority: 'P0',
+    dueDate: '2026-09-15',
+    status: 'in_progress',
+    assignedTo: 'Alex Vance (CEO)',
+    relatedMeetingId: 'evt-1',
+    category: 'Decision',
+    createdAt: Date.now() - 1000 * 60 * 120
+  },
+  {
+    id: 'task-2',
+    title: 'Sign off on Q3 Financial Audit deck for Sarah Jenkins',
+    priority: 'P0',
+    dueDate: '2026-09-15',
+    status: 'pending',
+    assignedTo: 'Alex Vance (CEO)',
+    relatedMeetingId: 'evt-4',
+    category: 'Preparation',
+    createdAt: Date.now() - 1000 * 60 * 90
+  },
+  {
+    id: 'task-3',
+    title: 'Dispatch autonomous diplomatic rescheduling email to David Marcus',
+    priority: 'P2',
+    dueDate: '2026-09-15',
+    status: 'completed',
+    assignedTo: 'OmniTask Autonomous Agent',
+    relatedMeetingId: 'evt-2',
+    category: 'Follow-up',
+    createdAt: Date.now() - 1000 * 60 * 45
+  },
+  {
+    id: 'task-4',
+    title: 'Draft counter-offer package for Dr. Aris Thorne (DeepMind recruit)',
+    priority: 'P1',
+    dueDate: '2026-09-16',
+    status: 'pending',
+    assignedTo: 'Alex Vance & Elena Rostova',
+    relatedMeetingId: 'evt-3',
+    category: 'Action Item',
+    createdAt: Date.now() - 1000 * 60 * 30
+  },
+  {
+    id: 'task-5',
+    title: 'Confirm Apex Corp $1.8M ARR renewal SLA concessions',
+    priority: 'P1',
+    dueDate: '2026-09-15',
+    status: 'pending',
+    assignedTo: 'James Sterling (VP Sales)',
+    relatedMeetingId: 'evt-5',
+    category: 'Action Item',
+    createdAt: Date.now() - 1000 * 60 * 15
   }
 ];

@@ -1,12 +1,13 @@
 import React from 'react';
-import { Calendar, Bot, AlertTriangle, Activity, Code2, Users } from 'lucide-react';
+import { Calendar, Bot, AlertTriangle, CheckSquare, Activity } from 'lucide-react';
 
-export type AndroidTab = 'schedule' | 'agent' | 'conflicts' | 'traces' | 'code' | 'vips';
+export type AndroidTab = 'calendar' | 'schedule' | 'chat' | 'tasks' | 'health';
 
 interface AndroidBottomNavProps {
   activeTab: AndroidTab;
   onChangeTab: (tab: AndroidTab) => void;
   conflictsCount: number;
+  tasksCount?: number;
 }
 
 interface NavItem {
@@ -19,19 +20,19 @@ interface NavItem {
 export const AndroidBottomNav: React.FC<AndroidBottomNavProps> = ({
   activeTab,
   onChangeTab,
-  conflictsCount
+  conflictsCount,
+  tasksCount
 }) => {
   const tabs: NavItem[] = [
-    { id: 'schedule', label: 'Schedule', icon: Calendar },
-    { id: 'agent', label: 'Agent', icon: Bot },
-    { id: 'conflicts', label: 'Conflicts', icon: AlertTriangle, badge: conflictsCount },
-    { id: 'traces', label: 'LangSmith', icon: Activity },
-    { id: 'code', label: 'Python', icon: Code2 },
-    { id: 'vips', label: 'VIPs', icon: Users },
+    { id: 'calendar', label: 'Calendar', icon: Calendar },
+    { id: 'schedule', label: 'Schedule', icon: AlertTriangle, badge: conflictsCount },
+    { id: 'chat', label: 'AI Agent', icon: Bot },
+    { id: 'tasks', label: 'Tasks', icon: CheckSquare, badge: tasksCount },
+    { id: 'health', label: 'Health', icon: Activity },
   ];
 
   return (
-    <div id="android-bottom-nav" className="bg-slate-950/95 backdrop-blur-lg border-t border-slate-800/80 px-2 py-1.5 flex items-center justify-around select-none">
+    <div id="android-bottom-nav" className="bg-slate-950/95 backdrop-blur-lg border-t border-slate-800/80 px-1.5 py-1.5 flex items-center justify-around select-none">
       {tabs.map((tab) => {
         const Icon = tab.icon;
         const isActive = activeTab === tab.id;

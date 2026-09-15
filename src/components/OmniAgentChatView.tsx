@@ -12,7 +12,8 @@ import {
   Clock,
   ArrowRight,
   ShieldCheck,
-  Volume2
+  Volume2,
+  Trash2
 } from 'lucide-react';
 import { AgentChatMessage } from '../types';
 
@@ -21,6 +22,7 @@ interface OmniAgentChatViewProps {
   onSendMessage: (text: string) => void;
   isProcessing: boolean;
   onSelectTrace: (traceId: string) => void;
+  onClearHistory?: () => void;
 }
 
 const QUICK_PROMPTS = [
@@ -35,7 +37,8 @@ export const OmniAgentChatView: React.FC<OmniAgentChatViewProps> = ({
   messages,
   onSendMessage,
   isProcessing,
-  onSelectTrace
+  onSelectTrace,
+  onClearHistory
 }) => {
   const [inputText, setInputText] = useState('');
   const [isListening, setIsListening] = useState(false);
@@ -89,9 +92,20 @@ export const OmniAgentChatView: React.FC<OmniAgentChatViewProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center space-x-1.5 px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/30 rounded text-[10px] font-semibold text-emerald-400">
-          <ShieldCheck className="w-3 h-3 mr-0.5" />
-          VIP Guard Active
+        <div className="flex items-center space-x-2">
+          {onClearHistory && messages.length > 0 && (
+            <button
+              onClick={onClearHistory}
+              title="Clear chat history"
+              className="p-1 text-slate-500 hover:text-slate-300 hover:bg-slate-800 rounded transition-colors"
+            >
+              <Trash2 className="w-3.5 h-3.5" />
+            </button>
+          )}
+          <div className="flex items-center space-x-1 px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/30 rounded text-[10px] font-semibold text-emerald-400">
+            <ShieldCheck className="w-3 h-3 mr-0.5" />
+            VIP Guard Active
+          </div>
         </div>
       </div>
 

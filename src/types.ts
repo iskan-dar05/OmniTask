@@ -98,10 +98,22 @@ export interface AgentChatMessage {
   timestamp: number;
   traceId?: string;
   actionDetails?: {
-    type: 'schedule' | 'conflict_resolve' | 'buffer_adjust' | 'briefing';
+    type: 'schedule' | 'conflict_resolve' | 'buffer_adjust' | 'briefing' | 'task_created';
     summary: string;
     affectedEvents?: string[];
   };
+}
+
+export interface ExecutiveTask {
+  id: string;
+  title: string;
+  priority: PriorityLevel;
+  dueDate: string;
+  status: 'pending' | 'in_progress' | 'completed';
+  assignedTo?: string;
+  relatedMeetingId?: string;
+  category: 'Action Item' | 'Preparation' | 'Follow-up' | 'Decision';
+  createdAt?: number;
 }
 
 export interface ExecutiveProfile {
